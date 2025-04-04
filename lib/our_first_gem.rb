@@ -10,7 +10,7 @@ module OurFirstGem
   # круг, прямоугольник, треугольник
 
   # круг
-  def circle(radius)
+  def  circle(radius)
     if radius.positive?
       s = Math::PI * radius**2
       puts "Площадь круга с радиусом #{radius} равна #{s.round(2)}"
@@ -22,7 +22,7 @@ module OurFirstGem
   end
 
   # прямоугольник
-  def rectangle(a, b = nil)
+  def (a, b = nil)
     # Если передан один аргумент (квадрат)
     b ||= a
     if a.to_f <= 0 || b.to_f <= 0
