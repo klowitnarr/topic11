@@ -44,6 +44,7 @@ module OurFirstGem
         p = (a + b + c) / 2.0
         area = Math.sqrt(p * (p - a) * (p - b) * (p - c))
         puts "Площадь треугольника по трём сторонам равна #{area.round(2)}"
+        area
       else
         puts "Ошибка: такого треугольника не существует"
       end
@@ -55,6 +56,7 @@ module OurFirstGem
         angle_radians = angle * Math::PI / 180.0
         area = 0.5 * a * b * Math.sin(angle_radians)
         puts "Площадь треугольника по двум сторонам и углу равна #{area.round(2)}"
+        area
       else
         puts "Ошибка: недопустимые параметры треугольника"
       end
