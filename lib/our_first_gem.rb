@@ -4,8 +4,10 @@ require_relative "our_first_gem/version"
 
 module OurFirstGem
   class Error < StandardError; end
-
-  # Круг
+  
+  # ПЛОЩАДИ:
+  
+  # Площадь Круга
   def self.circle(radius)
     if radius.positive?
       s = Math::PI * radius**2
@@ -20,7 +22,7 @@ module OurFirstGem
     return nil
   end
 
-  # Прямоугольник (или квадрат, если указана одна сторона)
+  # Площадь Прямоугольник (или квадрат, если указана одна сторона)
   def self.rectangle(a, b = nil)
     b ||= a
     if a.to_f <= 0 || b.to_f <= 0
@@ -34,7 +36,7 @@ module OurFirstGem
     puts "Ошибка: неверный тип аргументов"
   end
 
-  # Треугольник (по трём сторонам или двум сторонам и углу)
+  # Площадь Треугольника (по трём сторонам или двум сторонам и углу)
   def self.triangle(a, b, c = nil, angle = nil)
     if !c.nil? && angle.nil?
       # Формула Герона
@@ -74,6 +76,56 @@ module OurFirstGem
   def self.valid_sides_and_angle?(a, b, angle)
     a > 0 && b > 0 && angle > 0 && angle < 180
   end
+
+  #ОБЪЁМЫ:
+
+  # Объём шара
+  def self.sphere_volume(radius)
+    if radius.positive?
+      volume = (4.0 / 3) * Math::PI * radius**3
+      puts "Объём шара с радиусом #{radius} равен #{volume.round(2)}"
+      volume.round(2)
+    else
+      puts "Ошибка: радиус должен быть положительным числом"
+      nil
+    end
+  rescue ArgumentError, TypeError
+    puts "Ошибка: неверный тип аргументов"
+    nil
+  end
+
+  # Объём параллелепипеда (или куба, если все стороны равны)
+  def self.cuboid_volume(a, b = nil, c = nil)
+    b ||= a
+    c ||= a
+    if a.to_f > 0 && b.to_f > 0 && c.to_f > 0
+      volume = a * b * c
+      puts "Объём параллелепипеда #{a} × #{b} × #{c} = #{volume.round(2)}"
+      volume.round(2)
+    else
+      puts "Ошибка: все стороны должны быть положительными числами"
+      nil
+    end
+  rescue ArgumentError, TypeError
+    puts "Ошибка: неверный тип аргументов"
+    nil
+  end
+
+  # Объём пирамиды (основание - прямоугольник)
+  def self.pyramid_volume(base_area, height)
+    if base_area.to_f > 0 && height.to_f > 0
+      volume = (base_area * height) / 3.0
+      puts "Объём пирамиды с площадью основания #{base_area} и высотой #{height} = #{volume.round(2)}"
+      volume.round(2)
+    else
+      puts "Ошибка: площадь основания и высота должны быть положительными числами"
+      nil
+    end
+  rescue ArgumentError, TypeError
+    puts "Ошибка: неверный тип аргументов"
+    nil
+  end
+
 
   # --- Тестовые методы с пары
   def self.eng
