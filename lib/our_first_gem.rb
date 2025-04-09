@@ -17,7 +17,7 @@ module OurFirstGem
       puts "Ошибка: радиус должен быть положительным числом"
       return nil
     end
-  rescue ArgumentError, TypeError
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
     return nil
   end
@@ -29,42 +29,63 @@ module OurFirstGem
       puts "Ошибка: стороны должны быть положительными числами"
       return
     end
+    
     area = a.to_f * b.to_f
     formatted_area = area == area.to_i ? area.to_i : area.round(2)
     puts "Площадь прямоугольника #{a} × #{b} = #{formatted_area}"
-  rescue ArgumentError, TypeError
+    formatted_area  # добавлен явный возврат
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
+    nil
   end
 
+
+
+
   # Площадь Треугольника (по трём сторонам или двум сторонам и углу)
-  def self.triangle(a, b, c = nil, angle = nil)
+  def self.triangle(a, b, c = nil, angle: nil)
+    begin
+    a_num = a.to_f
+    b_num = b.to_f
     if !c.nil? && angle.nil?
       # Формула Герона
+      c_num = c.to_f
+      if a_num <= 0 || b_num <= 0 || c_num <= 0
+        puts "Ошибка: стороны должны быть положительными числами"
+        return nil
+      end
+
       if valid_triangle?(a, b, c)
-        p = (a + b + c) / 2.0
-        area = Math.sqrt(p * (p - a) * (p - b) * (p - c))
+        p = (a_num + b_num + c_num) / 2.0
+        area = Math.sqrt(p * (p - a_num) * (p - b_num) * (p - c_num))
         puts "Площадь треугольника по трём сторонам равна #{area.round(2)}"
-        area
+        return area
+
       else
         puts "Ошибка: такого треугольника не существует"
+        return nil
       end
-    elsif c.nil? && angle.nil?
-      puts "Ошибка: для расчета по двум сторонам и углу укажите угол"
-    elsif c.nil? && !angle.nil?
+
+    elsif !angle.nil?
       # По двум сторонам и углу между ними
-      if valid_sides_and_angle?(a, b, angle)
-        angle_radians = angle * Math::PI / 180.0
-        area = 0.5 * a * b * Math.sin(angle_radians)
+      angle_num = angle.to_f
+      if valid_sides_and_angle?(a_num, b_num, angle_num)
+        angle_radians = angle_num * Math::PI / 180.0
+        area = 0.5 * a_num * b_num * Math.sin(angle_radians)
+
         puts "Площадь треугольника по двум сторонам и углу равна #{area.round(2)}"
-        area
+        return area
       else
         puts "Ошибка: недопустимые параметры треугольника"
       end
     else
       puts "Ошибка: неверный набор параметров"
     end
-  rescue ArgumentError, TypeError
+
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
+    nil
+  end
   end
 
   # --- Вспомогательные методы для треугольника ---
@@ -91,7 +112,7 @@ module OurFirstGem
       puts "Ошибка: радиус должен быть положительным числом"
       nil
     end
-  rescue ArgumentError, TypeError
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
     nil
   end
@@ -108,7 +129,7 @@ module OurFirstGem
       puts "Ошибка: все стороны должны быть положительными числами"
       nil
     end
-  rescue ArgumentError, TypeError
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
     nil
   end
@@ -123,7 +144,7 @@ module OurFirstGem
       puts "Ошибка: площадь основания и высота должны быть положительными числами"
       nil
     end
-  rescue ArgumentError, TypeError
+  rescue ArgumentError, TypeError, NoMethodError
     puts "Ошибка: неверный тип аргументов"
     nil
   end

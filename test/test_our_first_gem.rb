@@ -33,7 +33,7 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.rectangle(false)
   end
   def test_triangle_common
-    assert_equal OurFirstGem.triangle(3,4,5),6
+    assert_equal OurFirstGem.triangle(3, 4, 5), 6
   end
   def test_triangle_incorrect_sides
     assert_nil OurFirstGem.triangle(2,2,4)
@@ -45,10 +45,10 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.triangle(-1,2,3)
   end
   def test_triangle_zero_side
-    assert_equal OurFirstGem.triangle(0,0,0),0
+    assert_equal OurFirstGem.triangle(0, 0, 0), 0
   end
   def test_triangle_angle_zero_sides
-    assert_equal OurFirstGem.triangle(0,0,angle:1),0
+    assert_equal OurFirstGem.triangle(0, 0, angle:1 ), 0
   end
   def test_triangle_zero_angle
     assert_nil OurFirstGem.triangle(2,1,0),nil
