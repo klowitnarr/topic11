@@ -7,7 +7,7 @@ class TestOurFirstGem < Minitest::Test
     assert_equal OurFirstGem.circle(1),Math::PI.round(2)
   end
   def test_circle_area_zero
-    assert_equal OurFirstGem.circle(0),0
+    assert_nil OurFirstGem.circle(0)
   end
   def test_circle_area_circle_negative
     assert_nil OurFirstGem.circle(-1)
@@ -26,7 +26,7 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.rectangle(-2)
   end
   def test_rectangle_zero
-    assert_equal OurFirstGem.rectangle(0),0
+    assert_nil OurFirstGem.rectangle(0)
   end
   def test_rectangel_argument_type
     assert_nil OurFirstGem.rectangle("lgsjk",4)
@@ -45,10 +45,10 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.triangle(-1,2,3)
   end
   def test_triangle_zero_side
-    assert_equal OurFirstGem.triangle(0, 0, 0), 0
+    assert_nil OurFirstGem.triangle(0, 0, 0)
   end
   def test_triangle_angle_zero_sides
-    assert_equal OurFirstGem.triangle(0, 0, angle:1 ), 0
+    assert_nil OurFirstGem.triangle(0, 0, angle:1 )
   end
   def test_triangle_zero_angle
     assert_nil OurFirstGem.triangle(2,1,0),nil
@@ -61,7 +61,7 @@ class TestOurFirstGem < Minitest::Test
     assert_equal OurFirstGem.sphere_volume(1.0),(4/3.0*Math::PI).round(2)
   end
   def test_sphere_zero
-    assert_equal OurFirstGem.sphere_volume(0.0),0
+    assert_equal OurFirstGem.sphere_volume(0.0),nil
   end
   def test_sphere_negative
     assert_nil OurFirstGem.sphere_volume(-2)
@@ -83,7 +83,7 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.cuboid_volume(-2)
   end
   def test_cuboid_zero
-    assert_equal OurFirstGem.cuboid_volume(0),0 # positiv не работает нормально с нулями
+    assert_nil OurFirstGem.cuboid_volume(0) # positiv не работает нормально с нулями
   end
   def test_cubeid_arg_type_err
     assert_nil OurFirstGem.cuboid_volume("lgsjk")
@@ -96,7 +96,7 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.pyramid_volume(-2,5)
   end
   def test_pyramid_zero
-    assert_equal OurFirstGem.pyramid_volume(0,0),0 # positiv не работает нормально с нулями
+    assert_nil OurFirstGem.pyramid_volume(0,0)
   end
   def test_pyramid_arg_type_err
     assert_nil OurFirstGem.pyramid_volume("lgsjk",5)
