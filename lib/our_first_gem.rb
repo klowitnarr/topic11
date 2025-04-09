@@ -150,22 +150,5 @@ module OurFirstGem
     nil
   end
 
-
-  # --- Тестовые методы с пары
-  def self.eng
-    "Hello"
-  end
-
-  def self.rus
-    "Привет"
-  end
-
-  def self.fr
-    "Salut"
-  end
-
-  def self.it
-    "Ciao"
-  end
 end
 

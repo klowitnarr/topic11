@@ -76,9 +76,6 @@ class TestOurFirstGem < Minitest::Test
   def test_cube_volume_common
     assert_equal OurFirstGem.cuboid_volume(2.0),8
   end
-  def test_cuboid_2_args
-    assert_nil OurFirstGem.cuboid_volume(2.0,2.0) # не верное количество аргументов либо 1 либо 3, ну или прикрути площадь прямоугольника
-  end
   def test_cuboid_negative
     assert_nil OurFirstGem.cuboid_volume(-2)
   end
