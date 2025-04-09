@@ -45,6 +45,7 @@ module OurFirstGem
   # Площадь Треугольника (по трём сторонам или двум сторонам и углу)
   def self.triangle(a, b, c = nil, angle: nil)
     begin
+
     a_num = a.to_f
     b_num = b.to_f
     if !c.nil? && angle.nil?
@@ -167,3 +168,4 @@ module OurFirstGem
     "Ciao"
   end
 end
+

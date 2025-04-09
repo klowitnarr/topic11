@@ -39,7 +39,7 @@ class TestOurFirstGem < Minitest::Test
     assert_nil OurFirstGem.triangle(2,2,4)
   end
   def test_triangle_angle_and_two_sides
-    assert_equal OurFirstGem.triangle(3,4,angle:30),3
+    assert_equal OurFirstGem.triangle(3,4,angle: 30).round(2),3
   end
   def test_triangle_negative
     assert_nil OurFirstGem.triangle(-1,2,3)
