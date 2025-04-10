@@ -5,7 +5,7 @@ require_relative "lib/our_first_gem/version"
 Gem::Specification.new do |spec|
   spec.name = "our_first_gem"
   spec.version = OurFirstGem::VERSION
-  spec.authors = ["Veronica Shpakova"]
+  spec.authors = ["Artem Vidishev", "Dmitry Zubkov", "Nikolay Krasilov", "Veronica Shpakova"]
   spec.email = ["vshpakova@sfedu.ru"]
 
   spec.summary = "summary"

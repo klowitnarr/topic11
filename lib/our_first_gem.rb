@@ -5,10 +5,27 @@ require_relative "our_first_gem/version"
 module OurFirstGem
   class Error < StandardError; end
   
+  # == Методы
+
+  # = Основные методы:
+  # 1. #circle - площадь круга
+  # 2. #rectangle - площадь прямоугольника (или квадрата, если указана одна сторона)
+  # 3. #triangle - площадь треугольника (по трём сторонам либо двум сторонам и углу)
+  # 4. #sphere_volume - объём шара
+  # 5. #cuboid_volume - объём параллелепипеда (или куба, если указана одна сторона)
+  # 6. #pyramid_volume - объём пирамиды с прямоугольным основанием
+
+  # = Вспомогательные методы:
+  # 3.1. #valid_triangle? - проверка допустимости значений длин трёх сторон
+  # 3.2. #valid_sides_and_angle? - проверка допустимости значений градуса угла и длин двух сторон
+
+
   # ПЛОЩАДИ:
-  
-  # Площадь Круга
+
+  # Площадь круга
   def self.circle(radius)
+    # @param radius [Double] радиус круга
+    # @return [Double] площадь круга
     if radius.positive?
       s = Math::PI * radius**2
       puts "Площадь круга с радиусом #{radius} равна #{s.round(2)}"
@@ -21,9 +38,13 @@ module OurFirstGem
     puts "Ошибка: неверный тип аргументов"
     return nil
   end
+ 
 
-  # Площадь Прямоугольник (или квадрат, если указана одна сторона)
+  # Площадь прямоугольника
   def self.rectangle(a, b = nil)
+    # @param a [Double] длина прямоугольника
+    # @param b [Double] ширина прямоугольника
+    # @return [Double] площадь прямоугольника
     b ||= a
     if a.to_f <= 0 || b.to_f <= 0
       puts "Ошибка: стороны должны быть положительными числами"
@@ -39,11 +60,13 @@ module OurFirstGem
     nil
   end
 
-
-
-
-  # Площадь Треугольника (по трём сторонам или двум сторонам и углу)
+  # Площадь треугольника
   def self.triangle(a, b, c = nil, angle: nil)
+    # @param a [Double] 
+    # @param b [Double] 
+    # @param c [Double] 
+    # @param angle [Double] угол между a,b в градусах
+    # @return [Double] площадь треугольника
     begin
 
     a_num = a.to_f
@@ -89,8 +112,13 @@ module OurFirstGem
   end
   end
 
+
   # --- Вспомогательные методы для треугольника ---
   def self.valid_triangle?(a, b, c)
+    # @param a [Double] 
+    # @param b [Double] 
+    # @param c [Double] 
+    # @return [Boolean] 
     a > 0 && b > 0 && c > 0 &&
       a + b > c &&
       a + c > b &&
@@ -98,13 +126,20 @@ module OurFirstGem
   end
 
   def self.valid_sides_and_angle?(a, b, angle)
+    # @param a [Double] 
+    # @param b [Double]  
+    # @param angle [Double] угол между a,b в градусах
+    # @return [Boolean] 
     a > 0 && b > 0 && angle > 0 && angle < 180
   end
+
 
   #ОБЪЁМЫ:
 
   # Объём шара
   def self.sphere_volume(radius)
+    # @param radius [Double] радиус шара
+    # @return [Double] объём шара
     if radius.positive?
       volume = (4.0 / 3) * Math::PI * radius**3
       puts "Объём шара с радиусом #{radius} равен #{volume.round(2)}"
@@ -118,8 +153,13 @@ module OurFirstGem
     nil
   end
 
+
   # Объём параллелепипеда (или куба, если все стороны равны)
   def self.cuboid_volume(a, b = nil, c = nil)
+    # @param a [Double] длина параллелепипеда
+    # @param b [Double] ширина параллелепипеда
+    # @param c [Double] высота параллелепипеда
+    # @return [Double] объём параллелепипеда
     b ||= a
     c ||= a
     if a.to_f > 0 && b.to_f > 0 && c.to_f > 0
@@ -135,8 +175,12 @@ module OurFirstGem
     nil
   end
 
+
   # Объём пирамиды (основание - прямоугольник)
   def self.pyramid_volume(base_area, height)
+    # @param base_area [Double] площадь основания пирамиды
+    # @param height [Double] высота пирамиды
+    # @return [Double] объём пирамиды
     if base_area.to_f > 0 && height.to_f > 0
       volume = (base_area * height) / 3.0
       puts "Объём пирамиды с площадью основания #{base_area} и высотой #{height} = #{volume.round(2)}"
