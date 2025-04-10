@@ -13,7 +13,7 @@ module OurFirstGem
   # 3. #triangle - площадь треугольника (по трём сторонам либо двум сторонам и углу)
   # 4. #sphere_volume - объём шара
   # 5. #cuboid_volume - объём параллелепипеда (или куба, если указана одна сторона)
-  # 6. #pyramid_volume - объём пирамиды с прямоугольным основанием
+  # 6. #pyramid_volume - объём пирамиды (основание - любой треугольник, прямоугольник, либо правильный многоугольник)
 
   # = Вспомогательные методы:
   # 3.1. #valid_triangle? - проверка допустимости значений длин трёх сторон
@@ -176,17 +176,32 @@ module OurFirstGem
   end
 
 
-  # Объём пирамиды (основание - прямоугольник)
-  def self.pyramid_volume(base_area, height)
-    # @param base_area [Double] площадь основания пирамиды
+  # Объём пирамиды
+  def self.pyramid_volume(height, n, a, b = nil, c = nil)
     # @param height [Double] высота пирамиды
+    # @param n [Integer] кол-во сторон основания
+    # @param a [Double] # сторона основания
+    # @param b [Double] # 2-я сторона основания(если треугольник)
+    # @param c [Double] # 3-я сторона основания (если треугольник)
     # @return [Double] объём пирамиды
+
+    if n < 3
+      puts "Ошибка: основание пирамиды должно иметь не менее 3 сторон"
+      return nil
+
+    if b != nil && c != nil
+      base_area = triangle(a, b, c)
+    elsif (b != nil && c == nil) || (c != nil && b == nil) 
+      base_area = rectangle(a,b)
+    else
+      base_area = n*a**2/(4*Math.tan(Math::PI/n))
+
     if base_area.to_f > 0 && height.to_f > 0
       volume = (base_area * height) / 3.0
       puts "Объём пирамиды с площадью основания #{base_area} и высотой #{height} = #{volume.round(2)}"
       volume.round(2)
     else
-      puts "Ошибка: площадь основания и высота должны быть положительными числами"
+      puts "Ошибка: аргументы должны быть положительными числами"
       nil
     end
   rescue ArgumentError, TypeError, NoMethodError
