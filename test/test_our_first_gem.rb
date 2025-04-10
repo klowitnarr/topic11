@@ -81,7 +81,7 @@ class TestOurFirstGem < Minitest::Test
   end
 
   def test_sphere_zero
-    assert_equal OurFirstGem.sphere_volume(0.0),nil
+    assert_nil OurFirstGem.sphere_volume(0.0)
   end
 
   def test_sphere_negative
@@ -106,7 +106,13 @@ class TestOurFirstGem < Minitest::Test
   end
 
   def test_cuboid_zero
-    assert_nil OurFirstGem.cuboid_volume(0) # positiv не работает нормально с нулями
+    assert_nil OurFirstGem.cuboid_volume(0)
+  end
+
+  def test_cuboid_2_args
+    assert_equal OurFirstGem.cuboid_volume(3, 4), 36, "Неуказанный аргумент считаем равным 1-му"
+    assert_equal OurFirstGem.cuboid_volume(a=2, b=4), 16
+    assert_equal OurFirstGem.cuboid_volume(a=2, c=4), 16
   end
 
   def test_cubeid_arg_type_err
@@ -137,3 +143,5 @@ class TestOurFirstGem < Minitest::Test
   end
 
 end
+
+# проверить, что все работает верно, если задать параллелепипед ровно двумя сторонами 

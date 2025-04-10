@@ -48,7 +48,7 @@ module OurFirstGem
     b ||= a
     if a.to_f <= 0 || b.to_f <= 0
       puts "Ошибка: стороны должны быть положительными числами"
-      return
+      return nil
     end
     
     area = a.to_f * b.to_f
@@ -188,6 +188,7 @@ module OurFirstGem
     if n < 3
       puts "Ошибка: основание пирамиды должно иметь не менее 3 сторон"
       return nil
+    end
 
     if b != nil && c != nil
       base_area = triangle(a, b, c)
@@ -195,6 +196,7 @@ module OurFirstGem
       base_area = rectangle(a,b)
     else
       base_area = n*a**2/(4*Math.tan(Math::PI/n))
+    end
 
     if base_area.to_f > 0 && height.to_f > 0
       volume = (base_area * height) / 3.0
