@@ -1,35 +1,54 @@
-# OurFirstGem
+# Считает площади и объёмы базовых фигур -- от круга до пирамиды!
 
-TODO: Delete this and the text below, and describe your gem
+Данный Гем умеет считать площадь круга, прямоугольника и треугольника, а также объём шара, параллелепипеда и пирамиды.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/our_first_gem`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Установка Гема
 
-## Installation
+### Шаг №1
+Вам нужно в терминале прописать:
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+```
+rake build
+```
 
-Install the gem and add to the application's Gemfile by executing:
+Если никаких ошибок не возникает , то двигаемся дальше. В привычном терминале пишем: 
+```
+rake install
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+### Шаг №2
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Далее, вам нужно зайти  в irb. Для этого в терминале нужно прописать :
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```
+irb
+```
 
-## Usage
+Поздравляем! Теперь вы в irb. В ней дальше вам нужно написать:
 
-TODO: Write usage instructions here
+```
+require "our_first_gem"
+```
+  
+Если выводит: «=> true», значит всё отлично и Вы уже почти у цели!
 
-## Development
+### Шаг №3
+И чтобы обратиться к нашему гему пишем 
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+OurFirstGem.<method>
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### К примеру:
 
-## Contributing
+```
+OurFirstGem.circle(5)
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/our_first_gem.
+Приятного использования!
 
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+# Авторы:
+    Видишев Артём
+    Зубков Дмитрий 
+    Красилов Николай
+    Шпакова Вероника
